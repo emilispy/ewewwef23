@@ -70,7 +70,9 @@ local AutoHatchToggle = MainTab:CreateToggle({
    end,
 })
 
+local TweenService = game:GetService("TweenService")
 local autoPickupEnabled = false
+
 local function autoPickup()
     while autoPickupEnabled do
         local character = game.Players.LocalPlayer.Character
@@ -78,14 +80,18 @@ local function autoPickup()
             task.wait(0.1)
             continue
         end
-      
+
         for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
             if not autoPickupEnabled then break end
             local targetPart = pickup:IsA("BasePart") and pickup or pickup:FindFirstChildWhichIsA("BasePart")
-            
+
             if targetPart then
-                character:SetPrimaryPartCFrame(targetPart.CFrame)
-                task.wait(0.01)
+                local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Linear) -- Adjust speed here
+                local goal = { CFrame = targetPart.CFrame }
+
+                local tween = TweenService:Create(character.PrimaryPart, tweenInfo, goal)
+                tween:Play()
+                tween.Completed:Wait()
             end
         end
     end
@@ -102,6 +108,7 @@ local AutoPickupToggle = MainTab:CreateToggle({
         end
     end,
 })
+
 
 local autoAchievementsEnabled = false
 local function autoAchievements()
