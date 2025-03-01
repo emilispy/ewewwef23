@@ -70,6 +70,7 @@ local AutoHatchToggle = MainTab:CreateToggle({
    end,
 })
 
+
 local TweenService = game:GetService("TweenService")
 local autoPickupEnabled = false
 
@@ -92,6 +93,8 @@ local function autoPickup()
                 local tween = TweenService:Create(character.PrimaryPart, tweenInfo, goal)
                 tween:Play()
                 tween.Completed:Wait()
+
+                task.wait(0.001) -- Stop inside each pickup briefly
             end
         end
     end
@@ -108,6 +111,7 @@ local AutoPickupToggle = MainTab:CreateToggle({
         end
     end,
 })
+
 
 
 local autoAchievementsEnabled = false
