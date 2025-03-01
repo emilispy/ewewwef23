@@ -87,7 +87,7 @@ local function autoPickup()
             local targetPart = pickup:IsA("BasePart") and pickup or pickup:FindFirstChildWhichIsA("BasePart")
 
             if targetPart then
-                local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Linear) -- Adjust speed here
+                local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Linear) -- Adjust speed here
                 local goal = { CFrame = targetPart.CFrame }
 
                 local tween = TweenService:Create(character.PrimaryPart, tweenInfo, goal)
