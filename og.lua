@@ -53,7 +53,7 @@ local AutoBlowToggle = MainTab:CreateToggle({
 local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
-      game:GetService("ReplicatedStorage").Assets.Remotes.PurchaseEgg:FireServer("Slushy Egg")
+      game:GetService("ReplicatedStorage").Assets.Remotes.PurchaseEgg:FireServer("Gummy Egg")
       wait(0.0001)
    end
 end
